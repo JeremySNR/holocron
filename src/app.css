@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "JetBrains Mono", "Space Mono", monospace;
+  --font-sans: "Inter", system-ui, sans-serif;
+  
+  --color-te-orange: #FF3E00;
+  --color-te-bg: #F2F2F2;
+  --color-te-border: #000000;
+}
+
+@layer base {
+  body {
+    @apply bg-te-bg text-black font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, .font-te-label {
+    @apply font-mono uppercase tracking-tighter font-bold;
+  }
+}
+
+/* Base Panel Styles */
+.te-panel {
+  @apply bg-white border border-te-border shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
+}
+
+.te-button {
+  @apply bg-white text-black border border-te-border shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] px-3 py-1 font-mono text-xs uppercase cursor-pointer active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all;
+}
+
+.te-button-black {
+  @apply bg-black text-white border border-black shadow-[2px_2px_0px_0px_rgba(255,62,0,0.5)] px-3 py-1 font-mono text-xs uppercase cursor-pointer active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all;
+}
+
+.te-button-active {
+  @apply bg-te-orange text-white;
+}
+
+.te-input {
+  @apply bg-white border border-te-border shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] px-3 py-2 font-mono text-sm focus:outline-none focus:ring-1 focus:ring-te-orange;
+}
+
+.te-divider-v {
+  @apply w-[1px] bg-te-border h-full;
+}
+
+.te-divider-h {
+  @apply h-[1px] bg-te-border w-full;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Tiptap Overrides */
+.tiptap {
+  @apply font-sans;
+}
+
+.tiptap h1 { @apply text-3xl mb-6 mt-8; }
+.tiptap h2 { @apply text-xl mb-4 mt-6; }
+.tiptap p { @apply text-base mb-4 leading-relaxed; }
+
+.tiptap pre {
+  @apply bg-black text-white p-4 font-mono text-sm overflow-x-auto my-6 shadow-none rounded-none;
+  /* Repeated te-panel styles minus the white bg */
+  @apply border border-te-border;
+}
+
+.tiptap ul[data-type="taskList"] {
+  @apply list-none p-0;
+}
+
+.tiptap ul[data-type="taskList"] li {
+  @apply flex items-start gap-3 mb-2;
+}
+
+.tiptap ul[data-type="taskList"] label {
+  @apply mt-1;
+}
+
+.tiptap ul[data-type="taskList"] input[type="checkbox"] {
+  @apply appearance-none w-4 h-4 border border-te-border bg-white checked:bg-te-orange cursor-pointer relative;
+}
+
+.tiptap ul[data-type="taskList"] input[type="checkbox"]:checked::after {
+  content: '✓';
+  @apply absolute inset-0 text-[10px] text-white flex items-center justify-center;
+}
+
+/* Callout Styles */
+div[data-type="callout"] {
+  @apply my-6 p-4 border-2 border-black bg-te-bg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative;
+}
+
+div[data-type="callout"]::before {
+  content: 'NOTICE';
+  @apply absolute -top-3 left-4 bg-black text-white px-2 py-0.5 font-mono text-[9px] font-black uppercase tracking-widest;
+}
+
+/* Page Card Block */
+.page-card-block {
+  @apply my-4 p-4 border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center gap-4 cursor-pointer transition-all hover:bg-gray-50 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none;
+}
+
+.page-card-icon {
+  @apply text-2xl shrink-0;
+}
+
+.page-card-title {
+  @apply font-mono text-sm font-black uppercase tracking-tight truncate;
+}
