@@ -51,7 +51,7 @@ If you want to play with the alpha, you'll need **Node.js** and **Rust** install
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/yourusername/holocron.git
+git clone https://github.com/JeremySNR/holocron.git
 
 # 2. Install the bits
 npm install
